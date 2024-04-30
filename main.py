@@ -65,7 +65,7 @@ while service != '4':
             feature = booking_feature()
 
             if feature == '1':
-                add_booking()
+                add_booking(fname)
             elif feature == '2':
                 remove_booking()
             elif feature == '3':

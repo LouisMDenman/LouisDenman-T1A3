@@ -1,3 +1,5 @@
+#Imported functions written for application
+from admin_functions import *
 
 def main():
     print("\nHey, Welcome to Gallo 24 Car Garage! \n")
@@ -47,11 +49,11 @@ while service != '4':
             feature = booking_feature()
 
             if feature == '1':
-                print("\nPlaceholder for ADD BOOKING function.")
+                add_booking()
             elif feature == '2':
-                print("\nPlaceholder for REMOVE BOOKING function.")
+                remove_booking()
             elif feature == '3':
-                print("\nPlaceholder for CHANGE BOOKING function.")
+                change_booking()
             else:
                 print("\nPlease enter one of the options shown above.")
 
@@ -62,9 +64,9 @@ while service != '4':
             feature = carinfo_feature()
 
             if feature == '1':
-                print("\nPlaceholder for SPECIFIC CAR function.")
+                specific_car_information()
             elif feature == '2':
-                print("\nPlaceholder for RANDOM CAR function.")
+                random_car_information()
             else:
                 print("\nPlease enter one of the options shown above.")
 
@@ -75,11 +77,11 @@ while service != '4':
             feature = buildconfig_feature()
 
             if feature == '1':
-                print("\nPlaceholder for PARTS IN STOCK function.")
+                parts_in_stock()
             elif feature == '2':
-                print("\nPlaceholder for NEW CONFIGURATION function.")
+                new_configuration()
             elif feature == '3':
-                print("\nPlaceholder for EXISTING CONFIGURATION function.")
+                existing_configuration()
             else:
                 print("\nPlease enter one of the options shown above.")
 

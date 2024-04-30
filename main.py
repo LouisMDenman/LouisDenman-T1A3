@@ -1,6 +1,12 @@
+#Import python packages
+import os.path
+
+#Import external packages 
+
 #Imported functions written for application
 from admin_functions import *
 
+#Main function loop
 def main():
     print("\nHey, Welcome to Gallo 24 Car Garage! \n")
     print("Enter 1 to add, remove or change a booking.")
@@ -11,6 +17,7 @@ def main():
     user_input = input(": ")
     return user_input
 
+#Booking function loop
 def booking_feature():
         print("\nEnter 1 to add a booking.")
         print("Enter 2 to remove a booking.")
@@ -20,6 +27,7 @@ def booking_feature():
         user_input = input(": ")
         return user_input
 
+#Car information loop
 def carinfo_feature():
         print("\nEnter 1 to get information about a specific car.")
         print("Enter 2 to get information about a random car.")
@@ -28,6 +36,7 @@ def carinfo_feature():
         user_input = input(": ")
         return user_input
 
+#Car configurator loop
 def buildconfig_feature():
         print("\nEnter 1 to see parts in stock for a specific car.")
         print("Enter 2 to start a new configuration.")
@@ -37,13 +46,20 @@ def buildconfig_feature():
         user_input = input(": ")
         return user_input
 
-service = -1
+#Create a booking csv if it does not already exist
+fname = 'bookings.csv'
+if (not os.path.isfile(fname)):
+    file = open(fname, 'w')
+    file.write("LastName,FirstName,Date,CarBrand,CarModel,Service\n")
+    file.close()
 
+#initialise the service variable and commence the main menu loop
+service = ''
 while service != '4':
     service = main()
 
     if service == '1':
-        feature = -1
+        feature = ''
 
         while feature != '4':
             feature = booking_feature()
@@ -58,7 +74,7 @@ while service != '4':
                 print("\nPlease enter one of the options shown above.")
 
     elif service == '2':
-        feature = -1
+        feature = ''
 
         while feature != '3':
             feature = carinfo_feature()
@@ -71,7 +87,7 @@ while service != '4':
                 print("\nPlease enter one of the options shown above.")
 
     elif service == '3':
-        feature = -1
+        feature = ''
 
         while feature != '4':
             feature = buildconfig_feature()
@@ -88,5 +104,5 @@ while service != '4':
     else:
         print("\nPlease enter one of the options shown above.")
 
-
+#Print a goodbye message
 print("\nThanks for visiting the Gallo 24 Car Garage, until next time!")

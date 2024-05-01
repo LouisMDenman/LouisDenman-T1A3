@@ -1,0 +1,15 @@
+CarBrand,CarModel,BodyType,0To60,Cylinders,Aspirated,Horsepower,TopSpeed
+Subaru,WRX,sedan,6.0,4,turbocharged,271,250
+Subaru,BRZ,coupe,7.5,4,naturally aspirated,228,220
+Toyota,86,coupe,7.5,4,naturally aspirated,228,220
+Nissan,350Z,coupe,5.8,6,naturally aspirated,287,250
+Nissan,370Z,coupe,5.1,6,naturally aspirated,332,253
+Mazda,RX7,coupe,5.2,3,twin turbocharged,252,259
+Nissan,SKYLINE R32 GTR,coupe,4.9,6,turbocharged,276,254
+Nissan,SKYLINE R33 GTR,coupe,5.5,6,turbocharged,276,249
+Nissan,SKYLINE R34 GTR,coupe,4.6,6,turbocharged,276,251
+Mitsubishi,EVOLUTION VII,sedan,4.7,4,turbocharged,276,228
+Mitsubishi,EVOLUTION IV,sedan,5.8,4,turbocharged,286,258
+Toyota,SUPRA MARK IV,coupe,5.1,6,turbocharged,276,255
+Mitsubishi,ECLIPSE GSX,coupe,7,4,turbocharged,210,230
+Dodge,CHARGER,coupe,6.4,8,supercharged,396,228

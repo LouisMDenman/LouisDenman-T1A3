@@ -12,7 +12,7 @@ def add_booking(fname):
     with open(fname, "a") as f:
         write = csv.writer(f)
         write.writerow([LastName,FirstName,Date,CarBrand,CarModel,Service])
-    print("\nThank you, your appointment is all booked in, see you then!")
+    print("\nThank you, your booking is sorted, see you then!")
 
 def remove_booking(fname):
     Fname = input("\nEnter your first name to select your bookings: ").capitalize()
@@ -21,29 +21,36 @@ def remove_booking(fname):
     CarBrand = input("What was the brand of car for this booking: ").capitalize()
     Service = input("Finally, was this booking a service, upgrade or repair? ").capitalize()
     temp_list = []
+    has_booking = False
     with open(fname, "r") as f:
         read = csv.reader(f)
         for row in read:
             if (row[1] == Fname) and (row[0] == Lname) and (row[2] == Date) and (row[3] == CarBrand) and (row[5] == Service):
-                pass
+                has_booking = True
             else:
                 temp_list.append(row)
-
+    if has_booking:
+        with open(fname, "w") as f:
+            write = csv.writer(f)
+            write.writerows(temp_list)
+        print("\nThank you, your booking is cancelled, until next time!")
+    else:
+        print("\nSorry, we couldn't find a booking under these details. Perhaps a spelling or format error was made, feel free to try again.")
 
 
 def view_booking(fname):
     try:
         Fname = input("\nEnter your first name to see your booked services: ").capitalize()
         Lname = input("Enter your last name to see your booked services: ").capitalize()
-        appts = False
+        has_booking = False
         with open(fname, "r") as f:
             read = csv.reader(f)
             read.__next__()
             for row in read:
                 if row[0] == Lname and row[1] == Fname:
                     print(f"\n{row[1]} {row[0]}'s {row[3]} {row[4]} is booked in for {row[5]} on the {row[2]}")    
-                    appts = True
-            if appts == False:
+                    has_booking = True
+            if has_booking == False:
                 print("\nWe have no bookings under this name.")
     except FileNotFoundError:
         print("Booking csv file doesn't exist.")

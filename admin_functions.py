@@ -72,7 +72,21 @@ def all_car_information(cardatabase):
         print("Car database csv file doesn't exist.")
 
 def specific_car_information(cardatabase):
-    print("specific car info")
+    try:
+        CarBrand = input("\nEnter the brand of car you would like to know more about: ").capitalize()
+        CarModel = input("\nEnter the model of car you would like to know more about: ").upper()
+        has_vehicle = False
+        with open(cardatabase, "r") as f:
+            read = csv.reader(f)
+            read.__next__()
+            for row in read:
+                if row[0] == CarBrand and row[1] == CarModel:
+                    print(f"\nThe {row[0]} {row[1].capitalize()} is a sport {row[2]} that accelerates from 0-100km/h in {row[3]} seconds, powered by a {row[4]} cylinder {row[5]} engine, which produces {row[6]} horsepower and gives the car a top speed of {row[7]}km/h.")  
+                    has_vehicle = True
+            if has_vehicle == False:
+                print("\nWe have no cars in our database under this name.")
+    except FileNotFoundError:
+        print("Car database csv file doesn't exist.")
 
 def random_car_information():
     print("Random car info")

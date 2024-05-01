@@ -1,5 +1,6 @@
 #Import python packages
 import csv
+from random import randint
 
 #bookings
 def add_booking(bookings):
@@ -88,8 +89,18 @@ def specific_car_information(cardatabase):
     except FileNotFoundError:
         print("Car database csv file doesn't exist.")
 
-def random_car_information():
-    print("Random car info")
+def random_car_information(cardatabase):
+    try:
+        temp_list = []
+        with open(cardatabase, "r") as f:
+            read = csv.reader(f)
+            read.__next__()
+            for row in read:
+                temp_list.append(row)
+        randnum = randint(0,len(temp_list))
+        print(f"\nThe {temp_list[randnum][0]} {temp_list[randnum][1].capitalize()} is a sport {temp_list[randnum][2]} that accelerates from 0-100km/h in {temp_list[randnum][3]} seconds, powered by a {temp_list[randnum][4]} cylinder {temp_list[randnum][5]} engine, which produces {temp_list[randnum][6]} horsepower and gives the car a top speed of {temp_list[randnum][7]}km/h.")
+    except FileNotFoundError:
+        print("Car database csv file doesn't exist.")
 
 #configurator
 def parts_in_stock():

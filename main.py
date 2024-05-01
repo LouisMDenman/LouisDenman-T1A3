@@ -9,7 +9,7 @@ from admin_functions import *
 #Main function loop
 def main():
     print("\nHey, Welcome to Gallo 24 Car Garage! \n")
-    print("Enter 1 to add, remove or change a booking.")
+    print("Enter 1 to add, remove or view a booking.")
     print("Enter 2 to access information or learn more about different models of cars.")
     print("Enter 3 to access the build configurator.")
     print("Enter 4 to exit the garage.\n")
@@ -21,7 +21,7 @@ def main():
 def booking_feature():
         print("\nEnter 1 to add a booking.")
         print("Enter 2 to remove a booking.")
-        print("Enter 3 to change a booking.")
+        print("Enter 3 to view bookings.")
         print("Enter 4 to cancel.\n")
 
         user_input = input(": ")
@@ -62,14 +62,14 @@ while service != '4':
         feature = ''
 
         while feature != '4':
-            feature = booking_feature()
+            feature = booking_feature(fname)
 
             if feature == '1':
                 add_booking(fname)
             elif feature == '2':
                 remove_booking()
             elif feature == '3':
-                change_booking()
+                view_booking(fname)
             else:
                 print("\nPlease enter one of the options shown above.")
 

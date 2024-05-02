@@ -11,7 +11,7 @@ def main():
     print("\nHey, Welcome to Gallo 24 Car Garage! \n")
     print("Enter 1 to add, remove or view a booking.")
     print("Enter 2 to access information or learn more about different models of cars.")
-    print("Enter 3 to access the build configurator.")
+    print("Enter 3 to guess a car.")
     print("Enter 4 to exit the garage.\n")
 
     user_input = input(": ")
@@ -27,22 +27,20 @@ def booking_feature():
         user_input = input(": ")
         return user_input
 
-#Car information loop
+#Car configurator loop
 def carinfo_feature():
-        print("\nEnter 1 to get information about all cars in the database.")
-        print("Enter 2 to get information about a specific car.")
-        print("Enter 3 to get information about a random car.")
+        print("\nEnter 1 to see information on all cars in our database.")
+        print("Enter 2 to see information on a specfic car.")
+        print("Enter 3 to see information on a random car.")
         print("Enter 4 to cancel.\n")
 
         user_input = input(": ")
         return user_input
 
-#Car configurator loop
-def buildconfig_feature():
-        print("\nEnter 1 to see parts in stock for a specific car.")
-        print("Enter 2 to start a new configuration.")
-        print("Enter 3 to modify an existing configuration.")
-        print("Enter 4 to cancel.\n")
+#Car guesser loop
+def carguess_feature():
+        print("\nEnter 1 to guess a random car selected from out database. You will get increasing hints with more guesses, and if you would like to exit or cannot guess the vehicle once in the game, type quit.")
+        print("Enter 2 to return to main menu.\n")
 
         user_input = input(": ")
         return user_input
@@ -93,16 +91,12 @@ while service != '4':
                 print("\nPlease enter one of the options shown above.")
     elif service == '3':
         feature = ''
-        while feature != '4':
-            feature = buildconfig_feature()
+        while feature != '2':
+            feature = carguess_feature()
 
             if feature == '1':
-                parts_in_stock()
+                car_guess(cardatabase)
             elif feature == '2':
-                new_configuration()
-            elif feature == '3':
-                existing_configuration()
-            elif feature == '4':
                 pass
             else:
                 print("\nPlease enter one of the options shown above.")

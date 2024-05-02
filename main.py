@@ -2,47 +2,48 @@
 import os.path
 
 #Import external packages 
+from colored import Fore, Back, Style
 
 #Imported functions written for application
 from admin_functions import *
 
 #Main function loop
 def main():
-    print("\nHey, Welcome to Gallo 24 Car Garage! \n")
+    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('53%', '12%', '47%')}\nHey, Welcome to Gallo 24 Car Garage! \n")
     print("Enter 1 to add, remove or view a booking.")
     print("Enter 2 to access information or learn more about different models of cars.")
     print("Enter 3 to guess a car.")
     print("Enter 4 to exit the garage.\n")
 
-    user_input = input(": ")
+    user_input = input(f":{Style.reset} ")
     return user_input
 
 #Booking function loop
 def booking_feature():
-        print("\nEnter 1 to add a booking.")
+        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\nEnter 1 to add a booking.")
         print("Enter 2 to remove a booking.")
         print("Enter 3 to view bookings.")
-        print("Enter 4 to cancel.\n")
+        print(f"Enter 4 to cancel.\n")
 
-        user_input = input(": ")
+        user_input = input(f":{Style.reset} ")
         return user_input
 
-#Car configurator loop
+#Car information loop
 def carinfo_feature():
-        print("\nEnter 1 to see information on all cars in our database.")
+        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('56%', '93%', '56%')}\nEnter 1 to see information on all cars in our database.")
         print("Enter 2 to see information on a specfic car.")
         print("Enter 3 to see information on a random car.")
         print("Enter 4 to cancel.\n")
 
-        user_input = input(": ")
+        user_input = input(f":{Style.reset} ")
         return user_input
 
 #Car guesser loop
 def carguess_feature():
-        print("\nEnter 1 to guess a random car selected from out database. You will get increasing hints with more guesses, and if you would like to exit or cannot guess the vehicle once in the game, type quit.")
+        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nEnter 1 to guess a random car selected from out database. You will get increasing hints with more guesses, and if you would like to exit or cannot guess the vehicle once in the game, type quit.")
         print("Enter 2 to return to main menu.\n")
 
-        user_input = input(": ")
+        user_input = input(f":{Style.reset} ")
         return user_input
 
 #Create a booking csv if it does not already exist
@@ -73,7 +74,7 @@ while service != '4':
             elif feature == '4':
                 pass
             else:
-                print("\nPlease enter one of the options shown above.")
+                print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nPlease enter one of the options shown above.{Style.reset}")
     elif service == '2':
         feature = ''
         while feature != '4':
@@ -88,7 +89,7 @@ while service != '4':
             elif feature == '4':
                 pass
             else:
-                print("\nPlease enter one of the options shown above.")
+                print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nPlease enter one of the options shown above.{Style.reset}")
     elif service == '3':
         feature = ''
         while feature != '2':
@@ -99,11 +100,11 @@ while service != '4':
             elif feature == '2':
                 pass
             else:
-                print("\nPlease enter one of the options shown above.")
+                print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nPlease enter one of the options shown above.{Style.reset}")
     elif service == '4':
         pass
     else:
-        print("\nPlease enter one of the options shown above.")
+        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nPlease enter one of the options shown above.{Style.reset}")
 
 #Print a goodbye message
-print("\nThanks for visiting the Gallo 24 Car Garage, until next time!")
+print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nThanks for visiting the Gallo 24 Car Garage, until next time!{Style.reset}")

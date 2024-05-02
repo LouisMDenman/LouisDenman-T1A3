@@ -2,10 +2,13 @@
 import csv
 from random import randint
 
+#Import external packages 
+from colored import Fore, Back, Style
+
 #bookings
 def add_booking(bookings):
     try:
-        FirstName = input("Please enter your first name: ").capitalize()
+        FirstName = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}Please enter your first name: ").capitalize()
         LastName = input("Please enter your last name: ").capitalize()
         Date = input("Please enter the date you would like to book (format: YYYY-MM-DD): ")
         CarBrand = input("Please enter the brand of your car: ").capitalize()
@@ -14,13 +17,13 @@ def add_booking(bookings):
         with open(bookings, "a") as f:
             write = csv.writer(f)
             write.writerow([LastName,FirstName,Date,CarBrand,CarModel,Service])
-        print("\nThank you, your booking is sorted, see you then!")
+        print(f"\nThank you, your booking is sorted, see you then!{Style.reset}")
     except FileNotFoundError:
-        print("Booking csv file doesn't exist.")
+        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}Booking csv file doesn't exist.{Style.reset}")
 
 def remove_booking(bookings):
     try:
-        Fname = input("\nEnter your first name to select your bookings: ").capitalize()
+        Fname = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\nEnter your first name to select your bookings: ").capitalize()
         Lname = input("Enter your last name to select your bookings: ").capitalize()
         Date = input("What was the date of the booking you would like to cancel? (format: YYYY-MM-DD): ")
         CarBrand = input("What was the brand of car for this booking: ").capitalize()
@@ -40,13 +43,13 @@ def remove_booking(bookings):
                 write.writerows(temp_list)
             print("\nThank you, your booking is cancelled, until next time!")
         else:
-            print("\nSorry, we couldn't find a booking under these details. Perhaps a spelling or format error was made, feel free to try again.")
+            print(f"\nSorry, we couldn't find a booking under these details. Perhaps a spelling or format error was made, feel free to try again.{Style.reset}")
     except FileNotFoundError:
-        print("Booking csv file doesn't exist.")
+        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}Booking csv file doesn't exist.{Style.reset}")
 
 def view_booking(bookings):
     try:
-        Fname = input("\nEnter your first name to see your booked services: ").capitalize()
+        Fname = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\nEnter your first name to see your booked services: ").capitalize()
         Lname = input("Enter your last name to see your booked services: ").capitalize()
         has_booking = False
         with open(bookings, "r") as f:
@@ -54,12 +57,12 @@ def view_booking(bookings):
             read.__next__()
             for row in read:
                 if row[0] == Lname and row[1] == Fname:
-                    print(f"\n{row[1]} {row[0]}'s {row[3]} {row[4]} is booked in for {row[5]} on the {row[2]}")    
+                    print(f"\n{row[1]} {row[0]}'s {row[3]} {row[4]} is booked in for {row[5]} on the {row[2]}{Style.reset}")    
                     has_booking = True
             if has_booking == False:
-                print("\nWe have no bookings under this name.")
+                print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nWe have no bookings under this name.{Style.reset}")
     except FileNotFoundError:
-        print("Booking csv file doesn't exist.")
+        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}Booking csv file doesn't exist.{Style.reset}")
 
 #information
 def all_car_information(cardatabase):
@@ -68,13 +71,13 @@ def all_car_information(cardatabase):
             read = csv.reader(f)
             read.__next__()
             for row in read:
-                print(f"\nThe {row[0]} {row[1].capitalize()} is a sport {row[2]} that accelerates from 0-100km/h in {row[3]} seconds, powered by a {row[4]} cylinder {row[5]} engine, which produces {row[6]} horsepower and gives the car a top speed of {row[7]}km/h.")    
+                print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('56%', '93%', '56%')}\nThe {row[0]} {row[1].capitalize()} is a sport {row[2]} that accelerates from 0-100km/h in {row[3]} seconds, powered by a {row[4]} cylinder {row[5]} engine, which produces {row[6]} horsepower and gives the car a top speed of {row[7]}km/h.{Style.reset}")    
     except FileNotFoundError:
-        print("Car database csv file doesn't exist.")
+        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}Car database csv file doesn't exist.{Style.reset}")
 
 def specific_car_information(cardatabase):
     try:
-        CarBrand = input("\nEnter the brand of car you would like to know more about: ").capitalize()
+        CarBrand = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('56%', '93%', '56%')}\nEnter the brand of car you would like to know more about: ").capitalize()
         CarModel = input("\nEnter the model of car you would like to know more about: ").upper()
         has_vehicle = False
         with open(cardatabase, "r") as f:
@@ -82,12 +85,12 @@ def specific_car_information(cardatabase):
             read.__next__()
             for row in read:
                 if row[0] == CarBrand and row[1] == CarModel:
-                    print(f"\nThe {row[0]} {row[1].capitalize()} is a sport {row[2]} that accelerates from 0-100km/h in {row[3]} seconds, powered by a {row[4]} cylinder {row[5]} engine, which produces {row[6]} horsepower and gives the car a top speed of {row[7]}km/h.")  
+                    print(f"\nThe {row[0]} {row[1].capitalize()} is a sport {row[2]} that accelerates from 0-100km/h in {row[3]} seconds, powered by a {row[4]} cylinder {row[5]} engine, which produces {row[6]} horsepower and gives the car a top speed of {row[7]}km/h.{Style.reset}")  
                     has_vehicle = True
             if has_vehicle == False:
-                print("\nWe have no cars in our database under this name.")
+                print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nWe have no cars in our database under this name.{Style.reset}")
     except FileNotFoundError:
-        print("Car database csv file doesn't exist.")
+        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}Car database csv file doesn't exist.{Style.reset}")
 
 def random_car_information(cardatabase):
     try:
@@ -98,9 +101,9 @@ def random_car_information(cardatabase):
             for row in read:
                 temp_list.append(row)
         randnum = randint(0,len(temp_list)-1)
-        print(f"\nThe {temp_list[randnum][0]} {temp_list[randnum][1].capitalize()} is a sport {temp_list[randnum][2]} that accelerates from 0-100km/h in {temp_list[randnum][3]} seconds, powered by a {temp_list[randnum][4]} cylinder {temp_list[randnum][5]} engine, which produces {temp_list[randnum][6]} horsepower and gives the car a top speed of {temp_list[randnum][7]}km/h.")
+        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('56%', '93%', '56%')}\nThe {temp_list[randnum][0]} {temp_list[randnum][1].capitalize()} is a sport {temp_list[randnum][2]} that accelerates from 0-100km/h in {temp_list[randnum][3]} seconds, powered by a {temp_list[randnum][4]} cylinder {temp_list[randnum][5]} engine, which produces {temp_list[randnum][6]} horsepower and gives the car a top speed of {temp_list[randnum][7]}km/h.{Style.reset}")
     except FileNotFoundError:
-        print("Car database csv file doesn't exist.")
+        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}Car database csv file doesn't exist.{Style.reset}")
 
 #car guesser
 def car_guess(cardatabase):
@@ -116,76 +119,76 @@ def car_guess(cardatabase):
         count = 0
         while guess != (f"{temp_list[randcar][0].upper()} {temp_list[randcar][1].upper()}"):
             if count == 0:
-                guess = input(f"\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds. ")
+                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds.{Style.reset} ")
                 guess = guess.upper()
                 if guess == "QUIT":
-                    print("\nYou have exited the game, see you next time.")
+                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
                     break
                 count += 1
             elif count < 5:
-                guess = input("Try again: ")
+                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}Try again:{Style.reset} ")
                 guess = guess.upper()
                 if guess == "QUIT":
-                    print("\nYou have exited the game, see you next time.")
+                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
                     break
                 count += 1
             elif count == 5:
-                guess = input(f"\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine. ")
+                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine.{Style.reset} ")
                 guess = guess.upper()
                 if guess == "QUIT":
-                    print("\nYou have exited the game, see you next time.")
+                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
                     break
                 count += 1
             elif count < 10:
-                guess = input("Try again: ")
+                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}Try again:{Style.reset} ")
                 guess = guess.upper()
                 if guess == "QUIT":
-                    print("\nYou have exited the game, see you next time.")
+                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
                     break
                 count += 1
             elif count == 10:
-                guess = input(f"\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h. ")
+                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h.{Style.reset} ")
                 guess = guess.upper()
                 if guess == "QUIT":
-                    print("\nYou have exited the game, see you next time.")
+                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
                     break
                 count += 1
             elif count < 15:
-                guess = input("Try again: ")
+                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}Try again:{Style.reset} ")
                 guess = guess.upper()
                 if guess == "QUIT":
-                    print("\nYou have exited the game, see you next time.")
+                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
                     break
                 count += 1
             elif count == 15:
-                guess = input(f"\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h. It is a {temp_list[randcar][2]}. ")
+                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h. It is a {temp_list[randcar][2]}.{Style.reset} ")
                 guess = guess.upper()
                 if guess == "QUIT":
-                    print("\nYou have exited the game, see you next time.")
+                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
                     break
                 count += 1
             elif count < 20:
-                guess = input("Try again: ")
+                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}Try again:{Style.reset} ")
                 guess = guess.upper()
                 if guess == "QUIT":
-                    print("\nYou have exited the game, see you next time.")
+                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
                     break
                 count += 1
             elif count == 20:
-                guess = input(f"\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h. It is a {temp_list[randcar][2]} made by {temp_list[randcar][0]}. ")
+                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h. It is a {temp_list[randcar][2]} made by {temp_list[randcar][0]}.{Style.reset} ")
                 guess = guess.upper()
                 if guess == "QUIT":
-                    print("\nYou have exited the game, see you next time.")
+                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
                     break
                 count += 1
             else:
-                guess = input("Try again: ")
+                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}Try again:{Style.reset} ")
                 guess = guess.upper()
                 if guess == "QUIT":
-                    print("\nYou have exited the game, see you next time.")
+                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
                     break
                 count += 1
         if guess != 'QUIT':
-            guess = print(f"\nGreat work! you correctly guessed the {temp_list[randcar][0]} {temp_list[randcar][1].capitalize()} in {count} guesses.")
+            guess = print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nGreat work! you correctly guessed the {temp_list[randcar][0]} {temp_list[randcar][1].capitalize()} in {count} guesses.{Style.reset}")
     except FileNotFoundError:
-        print("Car database csv file doesn't exist.")
+        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}Car database csv file doesn't exist.{Style.reset}")

@@ -117,77 +117,81 @@ def car_guess(cardatabase):
         randcar = randint(0,len(temp_list)-1)
         guess = ''
         count = 0
-        while guess != (f"{temp_list[randcar][0].upper()} {temp_list[randcar][1].upper()}"):
-            if count == 0:
-                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds.{Style.reset} ")
-                guess = guess.upper()
-                if guess == "QUIT":
-                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
-                    break
-                count += 1
-            elif count < 5:
-                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}Try again:{Style.reset} ")
-                guess = guess.upper()
-                if guess == "QUIT":
-                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
-                    break
-                count += 1
-            elif count == 5:
-                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine.{Style.reset} ")
-                guess = guess.upper()
-                if guess == "QUIT":
-                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
-                    break
-                count += 1
-            elif count < 10:
-                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}Try again:{Style.reset} ")
-                guess = guess.upper()
-                if guess == "QUIT":
-                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
-                    break
-                count += 1
-            elif count == 10:
-                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h.{Style.reset} ")
-                guess = guess.upper()
-                if guess == "QUIT":
-                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
-                    break
-                count += 1
-            elif count < 15:
-                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}Try again:{Style.reset} ")
-                guess = guess.upper()
-                if guess == "QUIT":
-                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
-                    break
-                count += 1
-            elif count == 15:
-                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h. It is a {temp_list[randcar][2]}.{Style.reset} ")
-                guess = guess.upper()
-                if guess == "QUIT":
-                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
-                    break
-                count += 1
-            elif count < 20:
-                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}Try again:{Style.reset} ")
-                guess = guess.upper()
-                if guess == "QUIT":
-                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
-                    break
-                count += 1
-            elif count == 20:
-                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h. It is a {temp_list[randcar][2]} made by {temp_list[randcar][0]}.{Style.reset} ")
-                guess = guess.upper()
-                if guess == "QUIT":
-                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
-                    break
-                count += 1
-            else:
-                guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}Try again:{Style.reset} ")
-                guess = guess.upper()
-                if guess == "QUIT":
-                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}\nYou have exited the game, see you next time.{Style.reset}")
-                    break
-                count += 1
+        if len(temp_list) > 1:
+            while guess != (f"{temp_list[randcar][0].upper()} {temp_list[randcar][1].upper()}"):
+                if count == 0:
+                    guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds.{Style.reset} ")
+                    guess = guess.upper()
+                    if guess == "QUIT":
+                        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nYou have exited the game, see you next time.{Style.reset}")
+                        break
+                    count += 1
+                elif count < 5:
+                    guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}Try again:{Style.reset} ")
+                    guess = guess.upper()
+                    if guess == "QUIT":
+                        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nYou have exited the game, see you next time.{Style.reset}")
+                        break
+                    count += 1
+                elif count == 5:
+                    guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine.{Style.reset} ")
+                    guess = guess.upper()
+                    if guess == "QUIT":
+                        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nYou have exited the game, see you next time.{Style.reset}")
+                        break
+                    count += 1
+                elif count < 10:
+                    guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}Try again:{Style.reset} ")
+                    guess = guess.upper()
+                    if guess == "QUIT":
+                        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nYou have exited the game, see you next time.{Style.reset}")
+                        break
+                    count += 1
+                elif count == 10:
+                    guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h.{Style.reset} ")
+                    guess = guess.upper()
+                    if guess == "QUIT":
+                        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nYou have exited the game, see you next time.{Style.reset}")
+                        break
+                    count += 1
+                elif count < 15:
+                    guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}Try again:{Style.reset} ")
+                    guess = guess.upper()
+                    if guess == "QUIT":
+                        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nYou have exited the game, see you next time.{Style.reset}")
+                        break
+                    count += 1
+                elif count == 15:
+                    guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h. It is a {temp_list[randcar][2]}.{Style.reset} ")
+                    guess = guess.upper()
+                    if guess == "QUIT":
+                        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nYou have exited the game, see you next time.{Style.reset}")
+                        break
+                    count += 1
+                elif count < 20:
+                    guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}Try again:{Style.reset} ")
+                    guess = guess.upper()
+                    if guess == "QUIT":
+                        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nYou have exited the game, see you next time.{Style.reset}")
+                        break
+                    count += 1
+                elif count == 20:
+                    guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h. It is a {temp_list[randcar][2]} made by {temp_list[randcar][0]}.{Style.reset} ")
+                    guess = guess.upper()
+                    if guess == "QUIT":
+                        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nYou have exited the game, see you next time.{Style.reset}")
+                        break
+                    count += 1
+                else:
+                    guess = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}Try again:{Style.reset} ")
+                    guess = guess.upper()
+                    if guess == "QUIT":
+                        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nYou have exited the game, see you next time.{Style.reset}")
+                        break
+                    count += 1
+        else:
+            print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nSorry, it looks like most of our database is unavailable for some reason. The only car we have information on right now is the {temp_list[0][0]} {temp_list[0][1].capitalize()}, a sport {temp_list[0][2]} that accelerates from 0-100km/h in {temp_list[0][3]} seconds, powered by a {temp_list[0][4]} cylinder {temp_list[0][5]} engine, which produces {temp_list[0][6]} horsepower and gives the car a top speed of {temp_list[0][7]}km/h. It wouldn't be fun guessing the same car over and over again, so when we update the database you can guess between many cars!{Style.reset}")
+            guess = 'QUIT'
         if guess != 'QUIT':
             guess = print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nGreat work! you correctly guessed the {temp_list[randcar][0]} {temp_list[randcar][1].capitalize()} in {count} guesses.{Style.reset}")
     except FileNotFoundError:

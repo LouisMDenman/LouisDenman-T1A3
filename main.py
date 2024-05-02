@@ -46,15 +46,29 @@ def carguess_feature():
         user_input = input(f":{Style.reset} ")
         return user_input
 
-#Create a booking csv if it does not already exist
+#assign variables required csv names
+cardatabase = 'cardatabase.csv'
 bookings = 'bookings.csv'
-if (not os.path.isfile(bookings)):
+
+#write bookings csv function
+def write_bookings_csv():
     file = open(bookings, 'w')
     file.write("LastName,FirstName,Date,CarBrand,CarModel,Service\n")
     file.close()
 
-#assign car database csv to a variable
-cardatabase = 'cardatabase.csv'
+#write car database csv function
+def write_cardatabase_csv():
+    file = open(cardatabase, 'w')
+    file.write("CarBrand,CarModel,BodyType,0To60,Cylinders,Aspirated,Horsepower,TopSpeed\nSubaru,BRZ,coupe,7.5,4,naturally aspirated,228,220")
+    file.close()
+
+#Check if booking csv doesn't exist and writes a file if that is the case
+if (not os.path.isfile(bookings)):
+    write_bookings_csv()
+
+#Check if car database csv doesn't exist and writes a file if that is the case
+if (not os.path.isfile(cardatabase)):
+    write_cardatabase_csv()
 
 #initialise the service variable and commence the main menu loop
 service = ''

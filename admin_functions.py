@@ -111,51 +111,81 @@ def car_guess(cardatabase):
             read.__next__()
             for row in read:
                 temp_list.append(row)
-        randcar = randint(0,len(temp_list))
+        randcar = randint(0,len(temp_list)-1)
         guess = ''
-        quit = 'quit'.upper()
         count = 0
-        while guess != (f"{temp_list[randcar][0].upper()} {temp_list[randcar][1].upper()}") and quit:
+        while guess != (f"{temp_list[randcar][0].upper()} {temp_list[randcar][1].upper()}"):
             if count == 0:
                 guess = input(f"\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds. ")
                 guess = guess.upper()
+                if guess == "QUIT":
+                    print("\nYou have exited the game, see you next time.")
+                    break
                 count += 1
             elif count < 5:
+                guess = input("Try again: ")
                 guess = guess.upper()
+                if guess == "QUIT":
+                    print("\nYou have exited the game, see you next time.")
+                    break
                 count += 1
             elif count == 5:
                 guess = input(f"\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine. ")
                 guess = guess.upper()
+                if guess == "QUIT":
+                    print("\nYou have exited the game, see you next time.")
+                    break
                 count += 1
             elif count < 10:
+                guess = input("Try again: ")
                 guess = guess.upper()
+                if guess == "QUIT":
+                    print("\nYou have exited the game, see you next time.")
+                    break
                 count += 1
             elif count == 10:
                 guess = input(f"\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h. ")
                 guess = guess.upper()
+                if guess == "QUIT":
+                    print("\nYou have exited the game, see you next time.")
+                    break
                 count += 1
             elif count < 15:
+                guess = input("Try again: ")
                 guess = guess.upper()
+                if guess == "QUIT":
+                    print("\nYou have exited the game, see you next time.")
+                    break
                 count += 1
             elif count == 15:
-                guess = input(f"\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h. It is a {temp_list[randcar][2]} .")
+                guess = input(f"\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h. It is a {temp_list[randcar][2]}. ")
                 guess = guess.upper()
+                if guess == "QUIT":
+                    print("\nYou have exited the game, see you next time.")
+                    break
                 count += 1
             elif count < 20:
+                guess = input("Try again: ")
                 guess = guess.upper()
+                if guess == "QUIT":
+                    print("\nYou have exited the game, see you next time.")
+                    break
                 count += 1
             elif count == 20:
                 guess = input(f"\nThe vehicle you are trying to guess goes from 0-100km/h in {temp_list[randcar][3]} seconds, and is powered by a {temp_list[randcar][4]} cylinder {temp_list[randcar][5]} engine, which produces {temp_list[randcar][6]} horsepower and gives the car a top speed of {temp_list[randcar][7]}km/h. It is a {temp_list[randcar][2]} made by {temp_list[randcar][0]}. ")
                 guess = guess.upper()
+                if guess == "QUIT":
+                    print("\nYou have exited the game, see you next time.")
+                    break
                 count += 1
             else:
+                guess = input("Try again: ")
                 guess = guess.upper()
+                if guess == "QUIT":
+                    print("\nYou have exited the game, see you next time.")
+                    break
                 count += 1
-                print(guess)
-                print((f"{temp_list[randcar][0].upper()} {temp_list[randcar][1].upper()}"))
-        if guess == 'QUIT':
-            print(f"\nThe vehicle you were trying to guess was the {temp_list[randcar][0]} {temp_list[randcar][1].capitalize()}.")
-        else:
+        if guess != 'QUIT':
             guess = print(f"\nGreat work! you correctly guessed the {temp_list[randcar][0]} {temp_list[randcar][1].capitalize()} in {count} guesses.")
     except FileNotFoundError:
         print("Car database csv file doesn't exist.")

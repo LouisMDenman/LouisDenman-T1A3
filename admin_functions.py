@@ -8,26 +8,26 @@ from colored import Fore, Back, Style
 #bookings
 def add_booking(bookings):
     try:
-        FirstName = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}Please enter your first name: ").capitalize()
-        LastName = input("Please enter your last name: ").capitalize()
-        Date = input("Please enter the date you would like to book (format: YYYY-MM-DD): ")
-        CarBrand = input("Please enter the brand of your car: ").capitalize()
-        CarModel = input("Please enter the model of your car: ").capitalize()
-        Service = input(f"Do you require a service, upgrade or repair? ").capitalize()
+        FirstName = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}Please enter your first name:{Style.reset} ").capitalize()
+        LastName = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}Please enter your last name:{Style.reset} ").capitalize()
+        Date = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}Please enter the date you would like to book (format: YYYY-MM-DD):{Style.reset} ")
+        CarBrand = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}Please enter the brand of your car:{Style.reset} ").capitalize()
+        CarModel = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}Please enter the model of your car:{Style.reset} ").capitalize()
+        Service = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}Do you require a service, upgrade or repair?{Style.reset} ").capitalize()
         with open(bookings, "a") as f:
             write = csv.writer(f)
             write.writerow([LastName,FirstName,Date,CarBrand,CarModel,Service])
-        print(f"{Style.reset}{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\nThank you, your booking is sorted, see you then!{Style.reset}")
+        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\nThank you, your booking is sorted, see you then!{Style.reset}")
     except FileNotFoundError:
         print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}Booking csv file doesn't exist.{Style.reset}")
 
 def remove_booking(bookings):
     try:
-        Fname = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\nEnter your first name to select your bookings: ").capitalize()
-        Lname = input("Enter your last name to select your bookings: ").capitalize()
-        Date = input("What was the date of the booking you would like to cancel? (format: YYYY-MM-DD): ")
-        CarBrand = input("What was the brand of car for this booking: ").capitalize()
-        Service = input(f"Finally, was this booking a service, upgrade or repair? ").capitalize()
+        Fname = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\nEnter your first name to select your bookings:{Style.reset} ").capitalize()
+        Lname = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}Enter your last name to select your bookings:{Style.reset} ").capitalize()
+        Date = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}What was the date of the booking you would like to cancel? (format: YYYY-MM-DD):{Style.reset} ")
+        CarBrand = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}What was the brand of car for this booking:{Style.reset} ").capitalize()
+        Service = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}Finally, was this booking a service, upgrade or repair?{Style.reset} ").capitalize()
         temp_list = []
         has_booking = False
         with open(bookings, "r") as f:
@@ -41,7 +41,7 @@ def remove_booking(bookings):
             with open(bookings, "w") as f:
                 write = csv.writer(f)
                 write.writerows(temp_list)
-            print(f"{Style.reset}{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\nThank you, your booking is cancelled, until next time!{Style.reset}")
+            print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\nThank you, your booking is cancelled, until next time!{Style.reset}")
         else:
             print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nSorry, we couldn't find a booking under these details. Perhaps a spelling or format error was made, feel free to try again.{Style.reset}")
     except FileNotFoundError:
@@ -49,15 +49,15 @@ def remove_booking(bookings):
 
 def view_booking(bookings):
     try:
-        Fname = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\nEnter your first name to see your booked services: ").capitalize()
-        Lname = input(f"Enter your last name to see your booked services: ").capitalize()
+        Fname = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\nEnter your first name to see your booked services:{Style.reset} ").capitalize()
+        Lname = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}Enter your last name to see your booked services:{Style.reset} ").capitalize()
         has_booking = False
         with open(bookings, "r") as f:
             read = csv.reader(f)
             read.__next__()
             for row in read:
                 if row[0] == Lname and row[1] == Fname:
-                    print(f"{Style.reset}{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\n{row[1]} {row[0]}'s {row[3]} {row[4]} is booked in for {row[5]} on the {row[2]}{Style.reset}")    
+                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\n{row[1]} {row[0]}'s {row[3]} {row[4]} is booked in for {row[5]} on the {row[2]}{Style.reset}")    
                     has_booking = True
             if has_booking == False:
                 print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nWe have no bookings under this name.{Style.reset}")
@@ -77,15 +77,15 @@ def all_car_information(cardatabase):
 
 def specific_car_information(cardatabase):
     try:
-        CarBrand = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('56%', '93%', '56%')}\nEnter the brand of car you would like to know more about: ").capitalize()
-        CarModel = input("\nEnter the model of car you would like to know more about: ").upper()
+        CarBrand = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('56%', '93%', '56%')}\nEnter the brand of car you would like to know more about:{Style.reset} ").capitalize()
+        CarModel = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('56%', '93%', '56%')}\nEnter the model of car you would like to know more about:{Style.reset} ").upper()
         has_vehicle = False
         with open(cardatabase, "r") as f:
             read = csv.reader(f)
             read.__next__()
             for row in read:
                 if row[0] == CarBrand and row[1] == CarModel:
-                    print(f"\nThe {row[0]} {row[1].capitalize()} is a sport {row[2]} that accelerates from 0-100km/h in {row[3]} seconds, powered by a {row[4]} cylinder {row[5]} engine, which produces {row[6]} horsepower and gives the car a top speed of {row[7]}km/h.{Style.reset}")  
+                    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('56%', '93%', '56%')}\nThe {row[0]} {row[1].capitalize()} is a sport {row[2]} that accelerates from 0-100km/h in {row[3]} seconds, powered by a {row[4]} cylinder {row[5]} engine, which produces {row[6]} horsepower and gives the car a top speed of {row[7]}km/h.{Style.reset}")  
                     has_vehicle = True
             if has_vehicle == False:
                 print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nWe have no cars in our database under this name.{Style.reset}")

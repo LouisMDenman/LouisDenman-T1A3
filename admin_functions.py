@@ -13,11 +13,11 @@ def add_booking(bookings):
         Date = input("Please enter the date you would like to book (format: YYYY-MM-DD): ")
         CarBrand = input("Please enter the brand of your car: ").capitalize()
         CarModel = input("Please enter the model of your car: ").capitalize()
-        Service = input("Do you require a service, upgrade or repair? ").capitalize()
+        Service = input(f"Do you require a service, upgrade or repair? ").capitalize()
         with open(bookings, "a") as f:
             write = csv.writer(f)
             write.writerow([LastName,FirstName,Date,CarBrand,CarModel,Service])
-        print(f"\nThank you, your booking is sorted, see you then!{Style.reset}")
+        print(f"{Style.reset}{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\nThank you, your booking is sorted, see you then!{Style.reset}")
     except FileNotFoundError:
         print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}Booking csv file doesn't exist.{Style.reset}")
 
@@ -27,7 +27,7 @@ def remove_booking(bookings):
         Lname = input("Enter your last name to select your bookings: ").capitalize()
         Date = input("What was the date of the booking you would like to cancel? (format: YYYY-MM-DD): ")
         CarBrand = input("What was the brand of car for this booking: ").capitalize()
-        Service = input("Finally, was this booking a service, upgrade or repair? ").capitalize()
+        Service = input(f"Finally, was this booking a service, upgrade or repair? ").capitalize()
         temp_list = []
         has_booking = False
         with open(bookings, "r") as f:
@@ -41,23 +41,23 @@ def remove_booking(bookings):
             with open(bookings, "w") as f:
                 write = csv.writer(f)
                 write.writerows(temp_list)
-            print("\nThank you, your booking is cancelled, until next time!")
+            print(f"{Style.reset}{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\nThank you, your booking is cancelled, until next time!{Style.reset}")
         else:
-            print(f"\nSorry, we couldn't find a booking under these details. Perhaps a spelling or format error was made, feel free to try again.{Style.reset}")
+            print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nSorry, we couldn't find a booking under these details. Perhaps a spelling or format error was made, feel free to try again.{Style.reset}")
     except FileNotFoundError:
         print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}Booking csv file doesn't exist.{Style.reset}")
 
 def view_booking(bookings):
     try:
         Fname = input(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\nEnter your first name to see your booked services: ").capitalize()
-        Lname = input("Enter your last name to see your booked services: ").capitalize()
+        Lname = input(f"Enter your last name to see your booked services: ").capitalize()
         has_booking = False
         with open(bookings, "r") as f:
             read = csv.reader(f)
             read.__next__()
             for row in read:
                 if row[0] == Lname and row[1] == Fname:
-                    print(f"\n{row[1]} {row[0]}'s {row[3]} {row[4]} is booked in for {row[5]} on the {row[2]}{Style.reset}")    
+                    print(f"{Style.reset}{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\n{row[1]} {row[0]}'s {row[3]} {row[4]} is booked in for {row[5]} on the {row[2]}{Style.reset}")    
                     has_booking = True
             if has_booking == False:
                 print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nWe have no bookings under this name.{Style.reset}")

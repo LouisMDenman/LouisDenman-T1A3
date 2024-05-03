@@ -46,6 +46,10 @@ def carguess_feature():
         user_input = input(f":{Style.reset} ")
         return user_input
 
+#Wrong input
+def wrong_input():
+    print(f"{Fore.red}\nPlease enter one of the options shown above.{Style.reset}")
+
 #assign variables required csv names
 cardatabase = 'cardatabase.csv'
 bookings = 'bookings.csv'
@@ -88,7 +92,7 @@ while service != '4':
             elif feature == '4':
                 pass
             else:
-                print(f"{Fore.red}\nPlease enter one of the options shown above.{Style.reset}")
+                wrong_input()
     elif service == '2':
         feature = ''
         while feature != '4':
@@ -103,7 +107,7 @@ while service != '4':
             elif feature == '4':
                 pass
             else:
-                print(f"{Fore.red}\nPlease enter one of the options shown above.{Style.reset}")
+                wrong_input()
     elif service == '3':
         feature = ''
         while feature != '2':
@@ -114,11 +118,11 @@ while service != '4':
             elif feature == '2':
                 pass
             else:
-                print(f"{Fore.red}\nPlease enter one of the options shown above.{Style.reset}")
+                wrong_input()
     elif service == '4':
         pass
     else:
-        print(f"{Fore.red}\nPlease enter one of the options shown above.{Style.reset}")
+        wrong_input()
 
 #Print a goodbye message
 print(f"{Fore.red}\nThanks for visiting the Gallo 24 Car Garage, until next time!{Style.reset}")

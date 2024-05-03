@@ -1,9 +1,13 @@
 #Import python packages
 import csv
 from random import randint
+from datetime import date
 
 #Import external packages 
 from colored import Fore, Back, Style
+
+#establish a variable for what the date is
+today = date.today()
 
 #booking csv error message function
 def bookingcsv_error():
@@ -27,6 +31,8 @@ def add_booking(bookings):
         FirstName = input(f"{Fore.rgb('0%', '100%', '100%')}Please enter your first name:{Style.reset} ").capitalize()
         LastName = input(f"{Fore.rgb('0%', '100%', '100%')}Please enter your last name:{Style.reset} ").capitalize()
         Date = input(f"{Fore.rgb('0%', '100%', '100%')}Please enter the date you would like to book (format: YYYY-MM-DD):{Style.reset} ")
+        while str(today) > Date:
+            Date = input(f"{Fore.red}Please enter a date in the future (format: YYYY-MM-DD):{Style.reset} ")
         CarBrand = input(f"{Fore.rgb('0%', '100%', '100%')}Please enter the brand of your car:{Style.reset} ").capitalize()
         CarModel = input(f"{Fore.rgb('0%', '100%', '100%')}Please enter the model of your car:{Style.reset} ").capitalize()
         Service = input(f"{Fore.rgb('0%', '100%', '100%')}Do you require a service, upgrade or repair?{Style.reset} ").capitalize()
@@ -44,6 +50,8 @@ def remove_booking(bookings):
         Fname = input(f"{Fore.rgb('0%', '100%', '100%')}\nEnter your first name to select your bookings:{Style.reset} ").capitalize()
         Lname = input(f"{Fore.rgb('0%', '100%', '100%')}Enter your last name to select your bookings:{Style.reset} ").capitalize()
         Date = input(f"{Fore.rgb('0%', '100%', '100%')}What was the date of the booking you would like to cancel? (format: YYYY-MM-DD):{Style.reset} ")
+        while str(today) > Date:
+            Date = input(f"{Fore.red}Please enter a date in the future (format: YYYY-MM-DD):{Style.reset} ")
         CarBrand = input(f"{Fore.rgb('0%', '100%', '100%')}What was the brand of car for this booking:{Style.reset} ").capitalize()
         Service = input(f"{Fore.rgb('0%', '100%', '100%')}Finally, was this booking a service, upgrade or repair?{Style.reset} ").capitalize()
         temp_list = []

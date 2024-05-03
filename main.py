@@ -9,7 +9,7 @@ from admin_functions import *
 
 #Main function loop
 def main():
-    print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('53%', '12%', '47%')}\nHey, Welcome to Gallo 24 Car Garage! \n")
+    print(f"{Fore.rgb('53%', '12%', '47%')}\nHey, Welcome to Gallo 24 Car Garage! \n")
     print("Enter 1 to add, remove or view a booking.")
     print("Enter 2 to access information or learn more about different models of cars.")
     print("Enter 3 to guess a car.")
@@ -20,7 +20,7 @@ def main():
 
 #Booking function loop
 def booking_feature():
-        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('0%', '100%', '100%')}\nEnter 1 to add a booking.")
+        print(f"{Fore.rgb('0%', '100%', '100%')}\nEnter 1 to add a booking.")
         print("Enter 2 to remove a booking.")
         print("Enter 3 to view bookings.")
         print(f"Enter 4 to cancel.\n")
@@ -30,7 +30,7 @@ def booking_feature():
 
 #Car information loop
 def carinfo_feature():
-        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('56%', '93%', '56%')}\nEnter 1 to see information on all cars in our database.")
+        print(f"{Fore.rgb('56%', '93%', '56%')}\nEnter 1 to see information on all cars in our database.")
         print("Enter 2 to see information on a specfic car.")
         print("Enter 3 to see information on a random car.")
         print("Enter 4 to cancel.\n")
@@ -40,7 +40,7 @@ def carinfo_feature():
 
 #Car guesser loop
 def carguess_feature():
-        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.rgb('100%', '84%', '0%')}\nEnter 1 to guess a random car selected from out database. You will get increasing hints with more guesses, and if you would like to exit or cannot guess the vehicle once in the game, type quit.")
+        print(f"{Fore.rgb('100%', '84%', '0%')}\nEnter 1 to guess a random car selected from out database. You will get increasing hints with more guesses, and if you would like to exit or cannot guess the vehicle once in the game, type quit.")
         print("Enter 2 to return to main menu.\n")
 
         user_input = input(f":{Style.reset} ")
@@ -88,7 +88,7 @@ while service != '4':
             elif feature == '4':
                 pass
             else:
-                print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nPlease enter one of the options shown above.{Style.reset}")
+                print(f"{Fore.red}\nPlease enter one of the options shown above.{Style.reset}")
     elif service == '2':
         feature = ''
         while feature != '4':
@@ -103,7 +103,7 @@ while service != '4':
             elif feature == '4':
                 pass
             else:
-                print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nPlease enter one of the options shown above.{Style.reset}")
+                print(f"{Fore.red}\nPlease enter one of the options shown above.{Style.reset}")
     elif service == '3':
         feature = ''
         while feature != '2':
@@ -114,11 +114,11 @@ while service != '4':
             elif feature == '2':
                 pass
             else:
-                print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nPlease enter one of the options shown above.{Style.reset}")
+                print(f"{Fore.red}\nPlease enter one of the options shown above.{Style.reset}")
     elif service == '4':
         pass
     else:
-        print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nPlease enter one of the options shown above.{Style.reset}")
+        print(f"{Fore.red}\nPlease enter one of the options shown above.{Style.reset}")
 
 #Print a goodbye message
-print(f"{Fore.rgb('82.7%', '82.7%', '82.7%')}{Back.red}\nThanks for visiting the Gallo 24 Car Garage, until next time!{Style.reset}")
+print(f"{Fore.red}\nThanks for visiting the Gallo 24 Car Garage, until next time!{Style.reset}")

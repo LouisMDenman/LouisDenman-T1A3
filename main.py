@@ -7,8 +7,8 @@ from colored import Fore, Back, Style
 #Imported functions written for application in admin_functions.py.
 from admin_functions import *
 
-#Main menu function used for printing output and recieving user input that detirmines what feature to use.
 def main():
+    """Main menu function used for printing output and recieving user input that detirmines what feature to use."""
     print(f"{Fore.rgb('53%', '12%', '47%')}\nHey, Welcome to Gallo 24 Car Garage! \n")
     print("Enter 1 to add, remove or view a booking.")
     print("Enter 2 to access information or learn more about different models of cars.")
@@ -18,8 +18,8 @@ def main():
     user_input = input(f":{Style.reset} ")
     return user_input
 
-#Sub menu function for the booking feature, responsible for printing output and recieving user input to detirmine if the user wants to add, remove, view booking/(s), or return to the main menu.
 def booking_feature():
+        """Sub menu function for the booking feature, responsible for printing output and recieving user input to detirmine if the user wants to add, remove, view booking/(s), or return to the main menu."""
         print(f"{Fore.rgb('0%', '100%', '100%')}\nEnter 1 to add a booking.")
         print("Enter 2 to remove a booking.")
         print("Enter 3 to view bookings.")
@@ -28,8 +28,8 @@ def booking_feature():
         user_input = input(f":{Style.reset} ")
         return user_input
 
-#Sub menu function for the car information feature, responsible for printing output and recieving user input to detirmine if the user wants to see information on all available cars, a specific car, a random car, or return to the main menu.
 def carinfo_feature():
+        """Sub menu function for the car information feature, responsible for printing output and recieving user input to detirmine if the user wants to see information on all available cars, a specific car, a random car, or return to the main menu."""
         print(f"{Fore.rgb('56%', '93%', '56%')}\nEnter 1 to see information on all cars in our database.")
         print("Enter 2 to see information on a specfic car.")
         print("Enter 3 to see information on a random car.")
@@ -38,30 +38,30 @@ def carinfo_feature():
         user_input = input(f":{Style.reset} ")
         return user_input
 
-#Sub menu function for the car guesser feature, responsible for printing output and recieving user input to detirmine if the user wants to play the guessing game, or return to the main menu.
 def carguess_feature():
+        """Sub menu function for the car guesser feature, responsible for printing output and recieving user input to detirmine if the user wants to play the guessing game, or return to the main menu."""
         print(f"{Fore.rgb('100%', '84%', '0%')}\nEnter 1 to guess a random car selected from out database. You will get increasing hints with more guesses, and if you would like to exit or cannot guess the vehicle once in the game, type quit.")
         print("Enter 2 to return to main menu.\n")
 
         user_input = input(f":{Style.reset} ")
         return user_input
 
-#A simple function that is called when misinput is entered at both the main menu and sub menu levels, and informs the users that they must enter an option displayed above in the relevant menu.
 def wrong_input():
+    """A simple function that is called when misinput is entered at both the main menu and sub menu levels, and informs the users that they must enter an option displayed above in the relevant menu."""
     print(f"{Fore.red}\nPlease enter one of the options shown above.{Style.reset}")
 
 #Assign the names of the required csv files for the application to global variables, so that they can be used to check if those file names exist in the directory and write them if they are not.
 cardatabase = 'cardatabase.csv'
 bookings = 'bookings.csv'
 
-#Function that creates a new csv file called 'bookings.csv' which is a required file for the application to run.
 def write_bookings_csv():
+    """Function that creates a new csv file called 'bookings.csv' which is a required file for the application to run."""
     file = open(bookings, 'w')
     file.write("LastName,FirstName,Date,CarBrand,CarModel,Service\n")
     file.close()
 
-#Function that creates a new csv file called 'cardatabase.csv' which is a required file for the application to run.
 def write_cardatabase_csv():
+    """Function that creates a new csv file called 'cardatabase.csv' which is a required file for the application to run."""
     file = open(cardatabase, 'w')
     file.write("CarBrand,CarModel,BodyType,0To60,Cylinders,Aspirated,Horsepower,TopSpeed\nSubaru,BRZ,coupe,7.5,4,naturally aspirated,228,220")
     file.close()
